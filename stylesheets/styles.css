@@ -1,21 +1,21 @@
 @font-face {
-  font-family: 'lakeshore';
-  src: url('fonts/LAKESHOR-webfont.eot');
-  src: url('fonts/LAKESHOR-webfont.eot?#iefix') format('embedded-opentype'),
-       url('fonts/LAKESHOR-webfont.woff') format('woff'),
-       url('fonts/LAKESHOR-webfont.ttf') format('truetype'),
-       url('fonts/LAKESHOR-webfont.svg#lakeshore') format('svg');
+  font-family: 'airstreamregular';
+  src: url('fonts/Airstream-webfont.eot');
+  src: url('fonts/Airstream-webfont.eot?#iefix') format('embedded-opentype'),
+  url('fonts/Airstream-webfont.woff') format('woff'),
+  url('fonts/Airstream-webfont.ttf') format('truetype'),
+  url('fonts/Airstream-webfont.svg#airstreamregular') format('svg');
   font-weight: normal;
   font-style: normal;
 }
 
 @font-face {
-  font-family: 'airstreamregular';
-  src: url('fonts/Airstream-webfont.eot');
-  src: url('fonts/Airstream-webfont.eot?#iefix') format('embedded-opentype'),
-       url('fonts/Airstream-webfont.woff') format('woff'),
-       url('fonts/Airstream-webfont.ttf') format('truetype'),
-       url('fonts/Airstream-webfont.svg#airstreamregular') format('svg');
+  font-family: 'lakeshore';
+  src: url('fonts/LAKESHOR-webfont.eot');
+  src: url('fonts/LAKESHOR-webfont.eot?#iefix') format('embedded-opentype'),
+  url('fonts/LAKESHOR-webfont.woff') format('woff'),
+  url('fonts/LAKESHOR-webfont.ttf') format('truetype'),
+  url('fonts/LAKESHOR-webfont.svg#lakeshore') format('svg');
   font-weight: normal;
   font-style: normal;
 }
@@ -31,15 +31,15 @@ body {
   background: rgb(149, 194, 215);
 }
 
-.thumbnail-item a {
+a[href='#'] {
   text-decoration: none;
-  display: block;
-  border: 1px solid rgb(100%, 100%, 100%);
-  border: 1px solid rgba(100%, 100%, 100%, 0.8);
 }
 
 .main-header {
   flex: 0 1 auto;
+}
+a{
+  text-decoration: none;
 }
 
 .logo-text {
@@ -50,34 +50,58 @@ body {
   font-size: 3.7em;
 }
 
+/*.logo-text:hover{*/
+/*transform: scale(1.5);*/
+/*transition: transform 700ms;*/
+
+/*!*transform: scale(0.001);*!*/
+/*!*transition: transform 0ms;*!*/
+
+/*}*/
+
 .main-content {
   flex: 1 1 auto;
+
   display: flex;
   flex-direction: column;
 }
 
 .thumbnail-list {
+
   flex: 0 1 auto;
   order: 2;
   display: flex;
   justify-content: space-between;
-  padding: 0;
+  list-style-type: none;
+  /*padding: 0;*/
+  padding: 20px 0;
+
   white-space: nowrap;
   overflow-x: auto;
 }
 
+/*.thumbnail-item + .thumbnail-item {*/
+/*margin-top: 1em;*/
+/*}*/
+
 .thumbnail-item {
+  /*display: block;*/
   display: inline-block;
+  /*width: 120px;*/
   min-width: 120px;
   max-width: 120px;
   border: 1px solid rgb(100%, 100%, 100%);
   border: 1px solid rgba(100%, 100%, 100%, 0.8);
-  transform: scale(0.8);
+  /*transition: transform 133ms;*/
+  /*控制鼠标悬停(hover)动画,也可以像下面那样写*/
   transition: transform 133ms ease-in-out;
+  /*transform: scale(1.2);*/
 }
 
 .thumbnail-item:hover {
-  transform: scale(1.0);
+  transform: scale(1.2);
+  /*控制鼠标悬停(hover)动画*/
+  /*transition: transform 1333ms ease-in-out;*/
 }
 
 .thumbnail-image {
@@ -93,10 +117,12 @@ body {
   color: rgb(202, 238, 255);
   font-family: sans-serif;
   font-size: 1.8em;
+  text-decoration: none;
 }
 
 .detail-image-container {
   flex: 1 1 auto;
+
   display: flex;
   justify-content: center;
   align-items: center;
@@ -105,11 +131,15 @@ body {
 .detail-image-frame {
   position: relative;
   text-align: center;
+  /*控制图片变大需要的时间*/
+  /*transition: transform 333ms;*/
   transition: transform 333ms cubic-bezier(1,.06,.28,1);;
+  /*transition: transform 333m cubic-bezier(1,.06,.28,1);*/
 }
 
 .is-tiny {
   transform: scale(0.001);
+  /*实际上这是对上面 transition: transform 333ms; 的 Override*/
   transition: transform 0ms;
 }
 
@@ -119,17 +149,20 @@ body {
 
 .detail-image-title {
   position: absolute;
-  bottom: -0.3em;
-  left: 0.4em;
+  bottom: -16px;
+  left: 4px;
   font-family: airstreamregular;
   color: white;
-  text-shadow: rgba(0, 0, 0, 0.9) 1px 2px 9px;
-  font-size: 4em;
+  /*text-shadow: rgba(0, 0, 0, 0.9) 1px 2px 9px;*/
+                                /*  x轴 y轴 扩散程度--数值越大,越虚  */
+  text-shadow: rgba(245, 233, 8, 1) 2px 2px 0px;
+  font-size: 40px;
 }
 
 .hidden-detail .detail-image-container {
   display: none;
 }
+
 .hidden-detail .thumbnail-list {
   flex-direction: column;
   align-items: center;
@@ -138,23 +171,22 @@ body {
   max-width: 80%;
 }
 
+
 @media all and (min-width: 768px) {
   .main-content {
     flex-direction: row;
     overflow: hidden;
   }
-
   .thumbnail-list {
     flex-direction: column;
     order: 0;
-    margin-left: 2em;
+    margin-left: 20px;
+    padding: 0 35px;
   }
-
   .thumbnail-item {
     max-width: 260px;
   }
-
-  .thumbnail-item + .thumbnail-item {
-    margin-top: 2em;
-  }
+  /*.thumbnail-item + .thumbnail-item {*/
+  /*margin-top: 20px;*/
+  /*}*/
 }
